@@ -15,6 +15,7 @@ namespace Calculator
         private double valor1;
         private double valor2;
         private double resultado;
+        private int operacion;
         public Form1()
         {
             InitializeComponent();
@@ -92,7 +93,21 @@ namespace Calculator
             //Boton Igual
             valor2 = Convert.ToDouble(tbDisplay.Text);
 
-            resultado = valor1 + valor2;
+            switch (operacion)
+            {
+                case 1:
+                    resultado = valor1 + valor2;
+                    break;
+                case 2:
+                    resultado = valor1 - valor2;
+                    break;
+                case 3:
+                    resultado = valor1 * valor2;
+                    break;
+                case 4:
+                    resultado = valor1 / valor2;
+                    break;
+            }
 
             tbDisplay.Text = resultado.ToString();
         }
@@ -100,9 +115,40 @@ namespace Calculator
         private void btnSuma_Click(object sender, EventArgs e)
         {
             //Boton Suma
+            operacion = 1;
             valor1 = Convert.ToDouble(tbDisplay.Text);
             tbDisplay.Text = "";
 
+        }
+
+        private void btnResta_Click(object sender, EventArgs e)
+        {
+            //Boton Resta
+            operacion = 2;
+            valor1 = Convert.ToDouble(tbDisplay.Text);
+            tbDisplay.Text = "";
+        }
+
+        private void btnMultiplicacion_Click(object sender, EventArgs e)
+        {
+            //Boton Multiplicar
+            operacion = 3;
+            valor1 = Convert.ToDouble(tbDisplay.Text);
+            tbDisplay.Text = "";
+        }
+
+        private void btnDivision_Click(object sender, EventArgs e)
+        {
+            //Boton Dividir
+            operacion = 4;
+            valor1 = Convert.ToDouble(tbDisplay.Text);
+            tbDisplay.Text = "";
+        }
+
+        private void btnPunto_Click(object sender, EventArgs e)
+        {
+            //Boton Punto
+            tbDisplay.Text = tbDisplay.Text + ",";
         }
     }
 }
